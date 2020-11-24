@@ -1,0 +1,14 @@
+.bg-bright-yellow{background-color:#FFFF00}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    
+}
+html {
+    height: 100%;
+}
+
+#__next {
+    min-height: 100vh;
+}

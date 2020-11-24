@@ -1,0 +1,16 @@
+nodejs part:
+sudo apt install nodejs
+sudo apt install npm
+npx create-next-app nextjs-blog --use-npm --example "https://github.com/vercel/next-learn-starter/tree/master/learn-starter"
+upload components, pages, public, package.json
+npm install
+
+python:
+sudo apt-get install python3.8
+pip3 install pillow, pdf2image
+
+Other dependency:
+sudo apt-get update
+sudo apt-get install -y poppler-utils
+sudo apt install potrace
+sudo apt-get install -y python3-fontforge
