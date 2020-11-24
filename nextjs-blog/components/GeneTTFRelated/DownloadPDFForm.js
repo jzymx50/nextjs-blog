@@ -66,7 +66,7 @@ export default class DownloadPDFForm extends React.Component {
                     ".pdf"
                 );
                 console.log(url);
-                this.setState({ url: "http://localhost:8080/" + url }); //"http://localhost:8080/"
+                this.setState({ url: "http://3.139.230.100:8080/" + url }); //"http://3.139.230.100:8080/"
                 document.getElementById("downloadurl").click();
             });
         } else {

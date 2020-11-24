@@ -46,7 +46,7 @@ export default class GenerateTTF extends React.Component {
                 );
                 let a = document.createElement("a");
                 document.body.appendChild(a);
-                a.href = "http://localhost:8080/" + url;
+                a.href = "http://3.139.230.100:8080/" + url;
                 a.download = url.split("/").pop();
                 a.click();
                 document.body.removeChild(a);

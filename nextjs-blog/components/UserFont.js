@@ -29,7 +29,7 @@ class UserFont extends React.Component {
             >
                 <div className="db dtc-ns v-mid w-75">
                     <div className="mb2 ml2">{this.props.info.projectName} by {this.props.info.userName} </div>
-                    <img src={"http://localhost:8080" + this.props.info.publish.Sample_pics[0]} alt={this.props.info.projectName} />
+                    <img src={"http://3.139.230.100:8080" + this.props.info.publish.Sample_pics[0]} alt={this.props.info.projectName} />
                 </div>
 
                 <div className="db dtc-ns v-mid ph2 pl3-ns w-25">
