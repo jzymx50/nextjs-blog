@@ -33,6 +33,7 @@ export default async (req, res) => {
             throw String("Method not allowed");
         }
     } catch (error) {
+        console.log(error);
         res.status(400).json({ message: JSON.stringify(error, null, 2) });
     }
 };
