@@ -12,7 +12,8 @@ import SearchBar from "../../components/SearchBar";
 export default function ProjectDetail({ project }) {
     const font = project[0]
     const { pid, projectName, userName, userOwn, last_modified: pdate, publish } = font
-    const { Sample_pics: urls, info, tags, license, likes, downloads, TTFname } = publish
+    const { Sample_pics: urls, info, tags, license, downloads, TTFname } = publish
+    const [likes, setLikes] = useState(publish.likes.length)
 
     const [uid, setUID] = useState(-1)
     const [isLiked, setIsLiked] = useState(false)
@@ -23,14 +24,19 @@ export default function ProjectDetail({ project }) {
         const style = document.createElement('style');
         style.appendChild(document.createTextNode(`@font-face{font-family:"${projectName}";src:url("${fontURL}");}textarea{font-family:"${projectName}"}`));
         document.head.appendChild(style);
-        setUID(checkCookie())
+
+        async function getUID() {
+            const test = await checkCookie()
+            setUID(test)
+        }
+        getUID()
         toggleAutoSuggestion()
 
     }, [])
 
     useEffect(() => {
         if (uid >= 0) {
-            if (likes.includes(uid)) {
+            if (publish.likes.includes(uid)) {
                 setIsLiked(true)
             }
         }
@@ -40,6 +46,15 @@ export default function ProjectDetail({ project }) {
     const tagStyle = 'f4 br3 ba bw1 ph3 pv2 mb3 mr3 dib near-black fl di ttc'
 
     const handleLikeButton = function () {
+        let output = []
+        if (isLiked) {
+            setLikes(likes - 1)
+            output = publish.likes.filter(id => id !== uid)
+        } else {
+            setLikes(likes + 1)
+            output = publish.likes
+            output.push(uid)
+        }
         fetch("/api/projectUpdate", {
             method: "POST",
             headers: {
@@ -47,9 +62,23 @@ export default function ProjectDetail({ project }) {
             },
             body: JSON.stringify({
                 pid: pid,
-                "publish.likes": likes.push(uid),
+                "publish.likes": output,
                 timeStamp: new Date(),
             }),
+        }).then(res => {
+            if (res.status == 200) {
+                if (isLiked) {
+                    setIsLiked(false)
+                } else {
+                    setIsLiked(true)
+                }
+            } else {
+                const likeButton = document.querySelector('#id')
+                const alert = document.createElement('div')
+                alert.setAttribute('class', 'mt2 absolute left-0 bottom-0 f5')
+                alert.textContent = 'Sorry, cannot like the font now due to server issues.'
+                likeButton.appendChild(alert)
+            }
         })
     }
 
@@ -113,7 +142,7 @@ export default function ProjectDetail({ project }) {
                             </div>
                             {/** font stats */}
                             <div className='flex flex-wrap f3 w-100 mt4'>
-                                <div className='w-50'>Likes:{' ' + likes.length}</div>
+                                <div className='w-50 likenum'>Likes:{' ' + likes}</div>
                                 <div className='w-50'>Downloads:{' ' + downloads}</div>
                                 <div className='w-100 mt1'>Last updated: {' ' + new Date(pdate).toLocaleString().split(',')[0]}</div>
                                 <div className='w-100 mt1'>License: {' ' + license}</div>

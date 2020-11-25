@@ -58,21 +58,35 @@ export default class UserProfile extends React.Component {
       console.log(auth2);
       if (auth2) {
         auth2.signOut().then(() => {
+          fetch("/api/cookiesRelated", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+            body: JSON.stringify({
+              uid: temp,
+              cookie: "",
+              timeStamp: new Date(),
+            }),
+          }).then(() => {
+            document.getElementById("homepage").click();
+          });
+        });
+      } else {
+        fetch("/api/cookiesRelated", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify({
+            uid: temp,
+            cookie: "",
+            timeStamp: new Date(),
+          }),
+        }).then(() => {
+          document.getElementById("homepage").click();
         });
       }
-      fetch("/api/cookiesRelated", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-        body: JSON.stringify({
-          uid: temp,
-          cookie: "",
-          timeStamp: new Date(),
-        }),
-      }).then(() => {
-        document.getElementById("homepage").click();
-      });
     });
   }
 

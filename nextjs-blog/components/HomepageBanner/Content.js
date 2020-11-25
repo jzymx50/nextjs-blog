@@ -22,10 +22,10 @@ const variants = {
 };
 
 export default function Content(props) {
-    const { title, content, direction } = props
+    const { title, content, direction, url } = props
 
     return (
-        <div className='mw9 center cf'>
+        <div className='center cf'>
             <motion.div
                 key={title}
                 custom={direction}
@@ -35,13 +35,12 @@ export default function Content(props) {
                 variants={variants}
                 transition={{ x: { type: 'spring', damping: 100, stiffness: 3000 } }}
             >
-                <div className='w-third fl'>
-                    <img src="https://placeholder.pics/svg/100/DEDEDE/555555/1" width='100%' />
+                <div className='w-two-thirds fl pr5'>
+                    <img src={url} width='100%' />
                 </div>
-                <div className='w-50 fr'>
-                    <div className='f1 mv4 b ttc'>{title}</div>
-                    <div className='f2'>{content}</div>
-
+                <div className='w-third fr pl3'>
+                    <div className='f2 mb4 b ttc'>{title}</div>
+                    <div className='f3'>{content}</div>
                 </div>
             </motion.div>
         </div>

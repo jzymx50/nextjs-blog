@@ -9,6 +9,7 @@ import { useState } from "react";
 import Content from "./Content";
 import { AnimatePresence } from "framer-motion";
 import items from "./text";
+import { urlObjectKeys } from "next/dist/next-server/lib/utils";
 
 function Banner() {
     const [direction, setDirection] = useState(0);
@@ -30,12 +31,13 @@ function Banner() {
     };
 
     return (
-        <div className="bg-gray pt5 relative overflow-hidden">
+        <div className="bg-light-gray pt5 relative overflow-hidden z-1">
             <div className="mw8 center">
                 <AnimatePresence initial={false} custom={index} exitBeforeEnter>
                     <Content
                         title={items[index].title}
                         content={items[index].content}
+                        url={items[index].url}
                         direction={direction}
                     />
                 </AnimatePresence>
@@ -63,11 +65,11 @@ function Banner() {
                             <Circle size="8" className="mh1" />
                         </>
                     ) : (
-                        <>
-                            <Circle size="8" className="mh1" />
-                            <CircleFill size="8" className="mh1" />
-                        </>
-                    )}
+                            <>
+                                <Circle size="8" className="mh1" />
+                                <CircleFill size="8" className="mh1" />
+                            </>
+                        )}
                 </div>
             </div>
         </div>

@@ -16,7 +16,11 @@ export default function Search({ fonts, query }) {
     const [uid, setUID] = useState(-1)
 
     useEffect(() => {
-        setUID(checkCookie())
+        async function getUID() {
+            const test = await checkCookie()
+            setUID(test)
+        }
+        getUID()
         toggleAutoSuggestion()
     }, [])
 

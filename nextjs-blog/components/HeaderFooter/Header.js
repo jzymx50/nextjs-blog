@@ -159,7 +159,7 @@ export default class Header extends React.Component {
                                     </li>
                                 </ul>
                             ) : (
-                                    <div></div>
+                                    this.state.type
                                 )}
                         </div>
                     </Popup>
