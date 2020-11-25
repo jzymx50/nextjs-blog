@@ -52,26 +52,26 @@ export default class UserProfile extends React.Component {
 
 
   actionLogout() {
-    fetch("/api/cookiesRelated", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-      body: JSON.stringify({
-        uid: this.props.uid,
-        cookie: "",
-        timeStamp: new Date(),
-      }),
-    }).then(() => {
-      gapi.load("auth2", function () {
-        let auth2 = gapi.auth2.getAuthInstance();
-        if (auth2) {
-          auth2.signOut().then(() => {
-            document.getElementById("homepage").click();
-          });
-        } else {
-          document.getElementById("homepage").click();
-        }
+    let temp = this.props.uid;
+    gapi.load("auth2", function () {
+      let auth2 = gapi.auth2.getAuthInstance();
+      console.log(auth2);
+      if (auth2) {
+        auth2.signOut().then(() => {
+        });
+      }
+      fetch("/api/cookiesRelated", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify({
+          uid: temp,
+          cookie: "",
+          timeStamp: new Date(),
+        }),
+      }).then(() => {
+        document.getElementById("homepage").click();
       });
     });
   }

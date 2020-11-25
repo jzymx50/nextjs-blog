@@ -147,8 +147,8 @@ export default class FontProjectInterface extends React.Component {
 
     render() {
         return (
-            <div className="h-100 overflow-auto dt mt5 ml5 f4">
-                <div className="bg-light-gray dtc v-top br4 pa3 shadow-3">
+            <div className="h-100 overflow-auto mt5 ml5 f4 flex">
+                <div className="bg-light-gray v-top br4 pa3 shadow-3 w-25 mb5">
                     {this.state.isOwner ? (
                         <div className="center">
                             {!this.state.editTitleMode ? (
@@ -189,7 +189,7 @@ export default class FontProjectInterface extends React.Component {
                             <div></div>
                         )}
                 </div>
-                <div className="w-75 h-100 dtc v-mid">
+                <div className="w-two-thirds v-mid mh5">
                     <ShowCaseSVG
                         pid={this.state.pid}
                         uid={this.props.uid}
