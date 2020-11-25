@@ -4,7 +4,7 @@ export default class SingleProjectProfile extends React.Component {
     constructor(props) {
         super(props);
         this.state = { project_name: "", last_modified: new Date().toISOString(), img_path: "" };
-        this.getProjectinfo(this.props.pid);
+        this.getProjectinfo(this.props.info);
         this.gotoProject = this.gotoProject.bind(this);
     }
 
@@ -28,7 +28,6 @@ export default class SingleProjectProfile extends React.Component {
             .then((res) => res.json())
             .then((data) => {
                 if (data.fail !== true) {
-                    console.log(typeof data.last_modified)
                     this.setState({
                         project_name: data.projectName,
                         last_modified: data.last_modified,
@@ -48,7 +47,7 @@ export default class SingleProjectProfile extends React.Component {
                         className="w-100"
                     ></img>
                     <div className="dt dt--fixed mb1">
-                        <span className="f1 lh-solid dtc georgia">
+                        <span className="f2 lh-solid dtc georgia">
                             {this.state.project_name}
                         </span>
                         <span className="f3 dtc">

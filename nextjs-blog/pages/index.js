@@ -69,7 +69,7 @@ export default class Home extends React.Component {
     }
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 
     const { db } = await connectToDatabase();
 

@@ -167,30 +167,7 @@ export default function ProjectDetail({ project }) {
     )
 }
 
-export async function getStaticPaths() {
-    // Get the ID array of all projects.
-    const { db } = await connectToDatabase();
-
-    const fonts = await db
-        .collection("projects")
-        .find()
-        .toArray();
-
-
-
-    // Get the paths we want to pre-render based on pids
-    const paths = fonts.map((font) => ({
-        params: { pid: font.pid.toString() },
-    }))
-
-
-    // We'll pre-render only these paths at build time.
-    // { fallback: false } means other routes should 404.
-    return { paths: paths, fallback: false }
-}
-
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
     // get the project json by pid
     const { db } = await connectToDatabase();
 

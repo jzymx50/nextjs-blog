@@ -70,7 +70,6 @@ export default (req, res) => {
                             temp_obj,
                             async function (err, result) {
                                 if (err) return console.error(err);
-                                //console.log(result);
                                 res.status(200).end();
                                 return resolve();
                             }

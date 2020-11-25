@@ -86,7 +86,7 @@ export default function Community({ fonts }) {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 
     const { db } = await connectToDatabase();
 

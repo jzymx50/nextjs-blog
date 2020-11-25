@@ -47,9 +47,9 @@ export default class FontProject extends React.Component {
                     <title>Font Project</title>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
-
+                <Header key={this.state.uid} uid={this.state.uid} />
                 <div className='min-vh-100 relative bg-moon-gray w-100 pb5'>
-                    <Header key={this.state.uid} uid={this.state.uid} />
+
 
                     {this.state.uid >= 0 ? (<FontProjectInterface key={this.state.uid} uid={this.state.uid} pid={this.state.pid} />) : null}
 

@@ -94,7 +94,6 @@ export default class FontProjectInterface extends React.Component {
 
     handleGenerateSubmit(child_state) {
         let base_path = "/Backend/Users/" + this.props.uid.toString() + "/Projects/" + this.state.pid.toString() + "/Output/";
-        console.log(base_path);
         fetch("/api/projectUpdate", {
             method: "POST",
             headers: {
@@ -147,7 +146,7 @@ export default class FontProjectInterface extends React.Component {
 
     render() {
         return (
-            <div className="h-100 overflow-auto mt5 ml5 f4 flex">
+            <div className="h-100 overflow-auto pt5 ml5 f4 flex">
                 <div className="bg-light-gray v-top br4 pa3 shadow-3 w-25 mb5">
                     {this.state.isOwner ? (
                         <div className="center">
