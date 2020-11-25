@@ -46,11 +46,13 @@ export default class Profile extends React.Component {
                 "Content-type": "application/json; charset=UTF-8",
             },
             body: JSON.stringify({
-                uid: this.props.uid,
+                uid: this.state.uid,
                 timeStamp: new Date(),
             }),
         })
-            .then((res) => res.json())
+            .then((res) => {
+                return res.json()
+            })
             .then((data) => {
                 this.setState({ new_pid: data.pid });
                 if (process.browser) {

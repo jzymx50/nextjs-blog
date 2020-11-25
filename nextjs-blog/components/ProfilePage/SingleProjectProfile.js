@@ -10,7 +10,7 @@ export default class SingleProjectProfile extends React.Component {
 
     gotoProject() {
         if (process.browser) {
-            document.getElementById("jumplink" + this.props.pid).click();
+            document.getElementById("jumplink" + this.props.info).click();
         }
     }
 
@@ -59,10 +59,10 @@ export default class SingleProjectProfile extends React.Component {
                 <Link
                     href={{
                         pathname: "/FontProject",
-                        query: { pid: this.props.pid },
+                        query: { pid: this.props.info },
                     }}
                 >
-                    <a id={"jumplink" + this.props.pid}></a>
+                    <a id={"jumplink" + this.props.info}></a>
                 </Link>
             </div>
         );
