@@ -11,7 +11,7 @@ import ItemsGrid from "../components/GridSystem/ItemsGrid.js";
 export default class Profile extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { uid: -1, userProjectList: [] };
+        this.state = { uid: -1, userProjectList: [], new_pid: -1 };
         this.checkCookie = this.checkCookie.bind(this);
         this.startNewProject = this.startNewProject.bind(this);
         this.getUserProjects = this.getUserProjects.bind(this);
