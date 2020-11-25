@@ -7,7 +7,7 @@ const itemType = {
 }
 
 export default function ItemsGrid(props) {
-    const { col, row, type, infoList } = props
+    const { col, row, type, infoList, hidePage } = props
 
     const count = infoList.length
     const pageNum = Math.ceil(count / (col * row))
@@ -43,7 +43,8 @@ export default function ItemsGrid(props) {
                         key={info.pid}
                     />)}
             </div>
-            <Pagination num={pageNum} label={currentPage} onPageChange={handlePageChange} />
+            {hidePage ? null : <Pagination num={pageNum} label={currentPage} onPageChange={handlePageChange} />}
+
         </div>
     )
 

@@ -57,7 +57,7 @@ export default class UploadPDFForm extends React.Component {
                 </p>
                 <form className="mh2 ph2" onSubmit={this.handleSubmit}>
                     <input
-                        className="center f6 ma1 pv3 ph2 dib black bg-washed-blue"
+                        className="center f6 ma1 pv3 ph2 dib black bg-white"
                         type="file"
                         name="file"
                         accept="application/pdf"

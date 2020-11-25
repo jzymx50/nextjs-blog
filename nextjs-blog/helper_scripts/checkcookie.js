@@ -1,9 +1,11 @@
 import { parseCookies } from "nookies";
 
-export default function checkCookie() {
+export default async function checkCookie() {
     const cookies = parseCookies();
+
     if (cookies) {
-        fetch("/api/cookiesRelated", {
+
+        const res = await fetch("/api/cookiesRelated", {
             method: "POST",
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
@@ -13,9 +15,10 @@ export default function checkCookie() {
                 timeStamp: new Date(),
             }),
         })
-            .then((res) => res.json())
-            .then((data) => {
-                return data.uid;
-            });
+        const data = await res.json()
+        return data.uid
     }
+
+
+
 }

@@ -66,8 +66,10 @@ export default class PublishFont extends React.Component {
                         <textarea
                             type="text"
                             name="info"
+                            rows={4}
                             value={this.state.info}
                             onChange={this.handleChange}
+                            className='w-100'
                         />
                     </label>{" "}
                     <br />

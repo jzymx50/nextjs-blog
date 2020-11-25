@@ -6,8 +6,7 @@ import math
 import subprocess
 import fontforge
 
-BASE_PATH = os.path.join(os.path.expanduser(
-    "~"), "nextjs-blog", "public", "Backend")
+BASE_PATH = os.path.join("/final", "nextjs-blog","nextjs-blog", "public", "Backend")
 UPPER_CASE = list(map(chr, range(65, 91)))
 LOWER_CASE = list(map(chr, range(97, 123)))
 NUMBERS = list(map(chr, range(48, 58)))

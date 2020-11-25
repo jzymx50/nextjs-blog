@@ -2,6 +2,9 @@ import Head from "next/head";
 import FontProjectInterface from "../components/FontProjectInterface.js";
 import fetch from "isomorphic-unfetch";
 import { parseCookies } from "nookies";
+import Header from '../components/HeaderFooter/Header'
+import Footer from '../components/HeaderFooter/Footer'
+
 
 export default class FontProject extends React.Component {
 
@@ -39,16 +42,22 @@ export default class FontProject extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <>
                 <Head>
                     <title>Font Project</title>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
 
-                <main id="root" className="pa0 w-100 min-h-100">
+                <div className='min-vh-100 relative bg-moon-gray w-100'>
+                    <Header key={this.state.uid} uid={this.state.uid} />
+
                     {this.state.uid >= 0 ? (<FontProjectInterface key={this.state.uid} uid={this.state.uid} pid={this.state.pid} />) : null}
-                </main>
-            </div>
+
+                </div>
+                <div className='absolute bottom-0 w-100'>
+                    <Footer />
+                </div>
+            </>
         );
     }
 }

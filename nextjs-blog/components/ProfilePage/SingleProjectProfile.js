@@ -32,7 +32,7 @@ export default class SingleProjectProfile extends React.Component {
                     this.setState({
                         project_name: data.projectName,
                         last_modified: data.last_modified,
-                        img_path: data.related.Sample_pics,
+                        img_path: 'http://3.139.230.100:8080' + data.related.Sample_pics,
                     });
                     this.project_info = data;
                 }

@@ -15,7 +15,11 @@ export default function Community({ fonts }) {
     const [infoList, setInfoList] = useState(fonts)
     const [uid, setUID] = useState(-1)
     useEffect(() => {
-        setUID(checkCookie())
+        async function getUID() {
+            const test = await checkCookie()
+            setUID(test)
+        }
+        getUID()
         toggleAutoSuggestion()
     }, [])
 

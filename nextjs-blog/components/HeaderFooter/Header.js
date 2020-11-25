@@ -17,6 +17,7 @@ export default class Header extends React.Component {
         this.toggleSignInPopup = this.toggleSignInPopup.bind(this);
         this.jumpLogIn = this.jumpLogIn.bind(this);
         this.jumpSignUp = this.jumpSignUp.bind(this);
+        this.handleStartButton = this.handleStartButton.bind(this);
         this.getUserProfile(this.props.uid);
     }
 
@@ -57,6 +58,15 @@ export default class Header extends React.Component {
             });
     }
 
+    handleStartButton() {
+        if (this.props.uid == -1) {
+            this.setState({ signinpopup: true })
+        } else {
+            window.open('http://calligraphy2digital.com/Profile', '_self')
+        }
+    }
+
+
     render() {
         return (
             <header className="sans-serif">
@@ -76,11 +86,13 @@ export default class Header extends React.Component {
                                     Home{" "}
                                 </a>
                             </Link>
-                            <Link href="/FontProject">
-                                <a className="f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3">
-                                    Get Started{" "}
-                                </a>
-                            </Link>
+
+                            <a className="f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3 pointer"
+                                onClick={this.handleStartButton}
+                            >
+                                Get Started{" "}
+                            </a>
+
                             <Link href="/Community">
                                 <a className="f6 fw4 hover-white no-underline white-70 dn dib-l pv2 ph3">
                                     Community{" "}

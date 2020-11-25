@@ -37,29 +37,33 @@ export default class Profile extends React.Component {
 
     render() {
         return (
-            <div className="container ">
+            <>
                 <Head>
                     <title>Profile</title>
                     <link rel="icon" href="/favicon.ico" />
                     <meta name="google-signin-client_id" content="2632322765-1q6o3aucrg484d4poc95vbio3025hde9.apps.googleusercontent.com" />
                     <script src="https://apis.google.com/js/platform.js" async defer></script>
                 </Head>
-                <Header key={this.state.uid} uid={this.state.uid} />
-                <main id="root" className="pa0 mw8 center min-h-100">
-                    <div className="flex items-start mb2">
-                        <div className="w-25 pa3 mr4 h2">
-                            <UserProfile key={this.state.uid} uid={this.state.uid} />
+                <div className='min-vh-100 relative'>
+                    <Header key={this.state.uid} uid={this.state.uid} />
+                    <main id="root" className="pa0 mw8 center min-h-100">
+                        <div className="flex items-start mb2">
+                            <div className="w-25 pa3 mr4 h2">
+                                <UserProfile key={this.state.uid} uid={this.state.uid} />
+                            </div>
+                            <div className="w-70 mr2 pt3 mt3">
+                                <Project_list
+                                    key={this.state.uid}
+                                    uid={this.state.uid}
+                                />
+                            </div>
                         </div>
-                        <div className="w-70 mr2 pt3 mt3">
-                            <Project_list
-                                key={this.state.uid}
-                                uid={this.state.uid}
-                            />
-                        </div>
+                    </main>
+                    <div className='absolute bottom-0 w-100'>
+                        <Footer />
                     </div>
-                </main>
-                <Footer />
-            </div>
+                </div>
+            </>
         );
     }
 }

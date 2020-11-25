@@ -77,61 +77,62 @@ export default function ProjectDetail({ project }) {
                 <meta name="google-signin-client_id" content="2632322765-1q6o3aucrg484d4poc95vbio3025hde9.apps.googleusercontent.com" />
                 <script src="https://apis.google.com/js/platform.js" async defer></script>
             </Head>
-            <Header key={uid} uid={uid} />
-            <SearchBar />
-            <div className='mw8 center mt4 mb5'>
-
-                <div className='db pv4'>
-                    <img src={"http://3.139.230.100:8080" + urls[1]} className='w-100' />
-                </div>
-
-                <div className='flex mt4'>
-                    <div className='w-two-thirds left-column pr5'>
-                        <div className='flex relative items-end'>
-                            <div className='f1 fl di mr3 b'>{projectName}</div>
-                            <div className='f3 fl di ml4'>by<strong>{' ' + userName}</strong></div>
-                        </div>
-
-                        <div className='f3 mt4'>{info}</div>
-                        <textarea
-                            placeholder='Type something to try this font...'
-                            rows='6'
-                            className='br4 f2 mt4 w-100 pa3 outline-0'
-                        ></textarea>
+            <div className='min-vh-100 relative'>
+                <Header key={uid} uid={uid} />
+                <SearchBar />
+                <div className='mw8 center mt4 pb6'>
+                    <div className='db pv4'>
+                        <img src={"http://3.139.230.100:8080" + urls[1]} className='w-100' />
                     </div>
-                    <div className='w-third right-column pl2'>
-                        {/** buttons div */}
-                        <div className='w-100 tr'>
-                            {uid >= 0 ? (<div className={buttonStyle} id='like' onClick={handleLikeButton}>
-                                {isLiked ? <BookmarkHeartFill className='v-mid' /> : <BookmarkHeart className='v-mid' />}
-                                <a>{isLiked ? ' Unlike' : ' Like'}</a>
-                            </div>) : <div className={buttonStyle} >Sign in to like this font</div>}
-                            {license === 'Downloadable' ? (<div className={buttonStyle} onClick={handleDownloadButton}>
-                                <CloudArrowDown className='v-mid' />
-                                <a> Download</a>
-                            </div>) : <div className={buttonStyle}>This font is copyrighted</div>}
+
+                    <div className='flex mt4'>
+                        <div className='w-two-thirds left-column pr5'>
+                            <div className='flex relative items-end'>
+                                <div className='f1 fl di mr3 b'>{projectName}</div>
+                                <div className='f3 fl di ml4'>by<strong>{' ' + userName}</strong></div>
+                            </div>
+
+                            <div className='f3 mt4'>{info}</div>
+                            <textarea
+                                placeholder='Type something to try this font...'
+                                rows='6'
+                                className='br4 f2 mt4 w-100 pa3 outline-0'
+                            ></textarea>
                         </div>
-                        {/** font stats */}
-                        <div className='flex flex-wrap f3 w-100 mt4'>
-                            <div className='w-50'>Likes:{' ' + likes.length}</div>
-                            <div className='w-50'>Downloads:{' ' + downloads}</div>
-                            <div className='w-100 mt1'>Last updated: {' ' + new Date(pdate).toLocaleString().split(',')[0]}</div>
-                            <div className='w-100 mt1'>License: {' ' + license}</div>
-                        </div>
-                        {/** tags */}
-                        <div className='mt5'>
-                            <div className='f3 b'>Tags</div>
-                            <div className='flex flex-wrap mt3'>
-                                {tags.map(tag =>
-                                    <div className={tagStyle} key={tag}>{tag}</div>
-                                )}
+                        <div className='w-third right-column pl2'>
+                            {/** buttons div */}
+                            <div className='w-100 tr'>
+                                {uid >= 0 ? (<div className={buttonStyle} id='like' onClick={handleLikeButton}>
+                                    {isLiked ? <BookmarkHeartFill className='v-mid' /> : <BookmarkHeart className='v-mid' />}
+                                    <a>{isLiked ? ' Unlike' : ' Like'}</a>
+                                </div>) : <div className={buttonStyle} >Sign in to like this font</div>}
+                                {license === 'Downloadable' ? (<div className={buttonStyle} onClick={handleDownloadButton}>
+                                    <CloudArrowDown className='v-mid' />
+                                    <a> Download</a>
+                                </div>) : <div className={buttonStyle}>This font is copyrighted</div>}
+                            </div>
+                            {/** font stats */}
+                            <div className='flex flex-wrap f3 w-100 mt4'>
+                                <div className='w-50'>Likes:{' ' + likes.length}</div>
+                                <div className='w-50'>Downloads:{' ' + downloads}</div>
+                                <div className='w-100 mt1'>Last updated: {' ' + new Date(pdate).toLocaleString().split(',')[0]}</div>
+                                <div className='w-100 mt1'>License: {' ' + license}</div>
+                            </div>
+                            {/** tags */}
+                            <div className='mt5'>
+                                <div className='f3 b'>Tags</div>
+                                <div className='flex flex-wrap mt3'>
+                                    {tags.map(tag =>
+                                        <div className={tagStyle} key={tag}>{tag}</div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className='absolute bottom-0 w-100'>
-
+                <div className='absolute bottom-0 w-100'>
+                    <Footer />
+                </div>
             </div>
         </>
     )
