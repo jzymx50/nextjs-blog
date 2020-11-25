@@ -35,7 +35,7 @@ export default function ItemsGrid(props) {
     return (
 
         <div className='mv2'>
-            <div className='flex flex-wrap w-100 mb5'>
+            <div className='flex flex-wrap w-100 mb4'>
                 {items.map(info =>
                     <SpecificItem
                         info={info}

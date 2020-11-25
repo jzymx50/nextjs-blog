@@ -96,7 +96,7 @@ export default class Profile extends React.Component {
                 </Head>
                 <div className='min-vh-100 relative flex flex-column'>
                     <Header key={this.state.uid} uid={this.state.uid} />
-                    <main id="root" className="pa0 mw8 center">
+                    <main id="root" className="pa0 mw8 center mb5">
                         <div className="flex mb2">
                             <div className="w-25 pa3 mr4 h2">
                                 <UserProfile key={this.state.uid} uid={this.state.uid} />
@@ -119,8 +119,7 @@ export default class Profile extends React.Component {
                                 >
                                     <a id="jumplink_new"></a>
                                 </Link>
-                                <ItemsGrid row={4} col={1} type='font_project' infoList={this.state.userProjectList} />
-
+                                <ItemsGrid row={5} col={1} type='font_project' infoList={this.state.userProjectList} />
                             </div>
                         </div>
                     </main>
